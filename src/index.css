@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .card {
+      @apply w-[420px] bg-white rounded-2xl border shadow-sm
+    }
+
+    .card-header {
+      @apply flex justify-between items-center
+    }
+
+    .card-title {
+      @apply flex justify-between p-5
+    }
+
+    .card-body {
+      @apply p-5
+    }
+
+    .card-footer {
+      @apply flex justify-end items-start gap-x-3 p-5
+    }
+
+    .btn-delete {
+      @apply w-20 h-8 rounded-md shadow-sm bg-red-700 text-white font-semibold
+    }
+
+    .btn-cancel {
+      @apply w-20 h-8 rounded-md border shadow-sm bg-white font-semibold
+    }
+
+    .btn-save {
+      @apply w-20 h-8 rounded-md border shadow-sm bg-teal-600 text-white font-semibold flex items-center justify-center
+    }
+
+    .btn-add {
+      @apply px-5 py-2 rounded-xl text-white font-semibold bg-teal-600
+    }
+
+    .list-group {
+      @apply w-[220px] bg-white border rounded-lg flex flex-col gap-y-2
+    }
+
+    .list-group-menu {
+      @apply flex gap-x-2 px-5 py-2 text-sm
+    }
+
+    .list-group-menu:hover {
+      @apply flex gap-x-2 px-5 py-2 cursor-pointer bg-slate-100 rounded-lg font-bold
+    }
+
+    .form-group {
+      @apply flex flex-col
+    }
+
+    .form-label {
+      @apply font-semibold text-sm
+    }
+
+    .form-control {
+      @apply px-4 py-1 w-full text-sm shadow-sm border rounded-md mt-3
+    }
+
+    .badge {
+      @apply bg-teal-100 border border-teal-600 text-slate-500 text-sm px-2.5 py-0.5 rounded w-max
+    }
+}
+
+@layer base {
+
+  input:focus, textarea:focus {
+    @apply outline-emerald-400 outline-offset-4 border-none rounded-sm
+  }
+
+  .btn-add:focus, .btn-add:active, .btn-save:focus, .btn-save:active {
+    @apply outline-teal-200
+  }
+
+  .btn-cancel:focus, .btn-cancel:active {
+    @apply outline-slate-300
+  }
+
+  .btn-danger:focus, .btn-danger:active {
+    @apply outline-red-200
+  }
+
+  .btn-add:hover, .btn-save:hover{
+    @apply bg-teal-700
+  }
+
+  .btn-cancel:hover {
+    @apply bg-slate-100
+  }
+
+  .dark {
+    @apply bg-gray-800
+  }
+  
+}
+
+.circle{
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgb(248, 95, 95);
+  left: 15%;
+  transform-origin: 50%;
+  animation: circle .5s alternate infinite ease;
+}
+
+@keyframes circle {
+  0%{
+      top: 60px;
+      height: 5px;
+      border-radius: 50px 50px 25px 25px;
+      transform: scaleX(1.7);
+  }
+  40%{
+      height: 20px;
+      border-radius: 50%;
+      transform: scaleX(1);
+  }
+  100%{
+      top: 0;
+  }
+}
+
+.circle:nth-child(2){
+  left: 45%;
+  animation-delay: .2s;
+}
+
+.circle:nth-child(3){
+  left: auto;
+  right: 15%;
+  animation-delay: .3s;
+}
+
+.shadows{
+  width: 20px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, .5);
+  position: absolute;
+  top: 62px;
+  transform-origin: 50%;
+  z-index: -1;
+  left: 15%;
+  filter: blur(1px);
+  animation: shadows .5s alternate infinite ease;
+}
+
+@keyframes shadows {
+  0%{
+      transform: scaleX(1.5);
+  }
+  40%{
+      transform: scaleX(1);
+      opacity: .2;
+  }
+  100%{
+      transform: scaleX(.2);
+      opacity: .4;
+  }
+}
+
+.shadows:nth-child(4){
+  left: 45%;
+  animation-delay: .2s;
+}
+
+.shadows:nth-child(5){
+  left: auto;
+  right: 15%;
+  animation-delay: .5s;
+}
+
+.wrapper{
+  width: 200px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wrapper span{
+  position: absolute;
+  top: 75px;
+  font-size: 20px;
+  letter-spacing: 12px;
+  color: rgb(248, 95, 95);
+  left: 15%;
+}
