@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import {IoMdAddCircleOutline} from 'react-icons/io'
 import Badge from './Badge'
@@ -13,18 +13,11 @@ import DeleteItem from '../api/todos/items/DeleteItem'
 
 import { ToastContainer, toast } from 'react-toastify';
 
-function CardTodos({refreshTodo, listTodos, ordering, length, todo, idGroup, bgcolor, bdcolor}) {
+function CardTodos({todo, idGroup, bgcolor, bdcolor}) {
 
     const [isShowModal, setIsShowModal] = useState(false)
     const [listItems, setListItems] = useState([])
     const [titleModal, setTitleModal] = useState("")
-    const refreshTodos = useCallback(
-      () => {
-        refreshTodo()
-      },
-      [refreshTodo],
-    )
-    
 
     const {  setValue, resetField, handleSubmit, control, formState: { errors } } = useForm(); 
 
@@ -147,25 +140,6 @@ function CardTodos({refreshTodo, listTodos, ordering, length, todo, idGroup, bgc
         
     }
 
-    const onMoveLeft = async(data, order) => {
-
-        const res = await UpdateItem(data[0].todo_id, data[0].id, data[0], order[0].id)
-            
-        if (res.status === 200) {
-            refreshTodos()
-        }
-    }
-
-    const onMoveRigth = async(data, order) => {
-        
-        const res = await UpdateItem(data[0].todo_id, data[0].id, data[0], order[0].id)
-            
-        if (res.status === 200) {
-            refreshTodos()
-
-        }
-    }
-
     return (
         <div id='drop'
             className={`flex flex-col border w-full rounded-md py-4 shadow h-max ${bgcolor} ${bdcolor} dark:bg-gray-700 dark:border-gray-500`}
@@ -184,17 +158,12 @@ function CardTodos({refreshTodo, listTodos, ordering, length, todo, idGroup, bgc
                 listItems.length ?
                     listItems.map(item=>(
                         <CardItems 
-                            key={item.id} 
-                            listTodos={listTodos}
+                            key={item.id}
                             item={item} 
                             showModalEdit={()=>showModal('edit',item)}
                             onDelete={()=>handleDelete(item.id)}
-                            ordering={ordering}
-                            length={length}
                             setListItems={setListItems}
                             listItems={listItems}
-                            onMoveLeft={(data, order)=>onMoveLeft(data, order)}
-                            onMoveRigth={(data, order)=>onMoveRigth(data, order)}
                         />
                     ))
                 :

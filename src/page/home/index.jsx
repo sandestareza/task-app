@@ -61,18 +61,13 @@ function Home() {
 					isLoading ? <Loading darktext="dark:text-zinc-100" darkbg="dark:bg-zinc-100" /> :
 					listTodos.length ?
 						listTodos.map((todo, i) => {
-							todo.ordering = i+1
 							return (		
 								<CardTodos 
-									ordering={todo.ordering}
-									length={listTodos.length}
 									key={todo.id} 
 									todo={todo} 
 									idGroup={todo.id} 
-									listTodos={listTodos}
 									bgcolor={COLOR_CARD[i]}
 									bdcolor={BORDER_COLOR_CARD[i]}
-									refreshTodo={getListTodos}
 								/>				
 								
 													

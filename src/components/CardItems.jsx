@@ -5,7 +5,7 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 import ProgressBar from './ProgressBar'
 import ListGroup from './ListGroup';
 
-function CardItems({listTodos, ordering, length, item, showModalEdit, onDelete, listItems, setListItems, onMoveLeft, onMoveRigth}) {
+function CardItems({item, showModalEdit, onDelete, listItems, setListItems}) {
     
     const card = useRef(null)
      
@@ -21,20 +21,6 @@ function CardItems({listTodos, ordering, length, item, showModalEdit, onDelete, 
             const temp = listItems.filter(val =>  val.id !== item.id)
             setListItems(temp)
         }
-    }
-
-    const handleOnMoveLeft = () => {
-        const temp = listItems.filter(val =>  val.id === item.id)
-        const order = listTodos.filter(val=> val.ordering === ordering - 1)
-        
-        onMoveLeft(temp, order)
-    }
-
-    const handleOnMoveRigth = () => {
-        const temp = listItems.filter(val =>  val.id === item.id)
-        const order = listTodos.filter(val=> val.ordering === ordering + 1)
-
-        onMoveRigth(temp, order)
     }
 
     return (
@@ -65,16 +51,12 @@ function CardItems({listTodos, ordering, length, item, showModalEdit, onDelete, 
                         {
                             visibleMenu &&
                             <ListGroup 
-                                ordering={ordering}
-                                length={length}
                                 onEdit={()=>{
                                     setVisibleMenu(false)
                                     showModalEdit()
                                 }}
                                 onDelete={()=>onDelete()}
                                 onMouseLeave={()=>setVisibleMenu(false)}
-                                onMoveLeft={()=>handleOnMoveLeft()}
-                                onMoveRigth={()=>handleOnMoveRigth()}
                             />
                         }
                     </div>
